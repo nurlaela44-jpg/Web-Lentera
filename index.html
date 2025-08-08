@@ -85,11 +85,8 @@
       <nav id="site-nav" class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between relative transition-all duration-300">
         <!-- Logo (SVG) -->
         <a href="#top" class="group inline-flex items-center gap-3">
-          <span class="relative flex size-9 items-center justify-center rounded-full bg-accent/15 text-accent ring-1 ring-accent/30 shadow-glow">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="animate-float">
-              <path d="M12 2a10 10 0 100 20 10 10 0 000-20Zm0 0c3.866 0 7 3.134 7 7 0 5-4 10-7 10s-7-5-7-10c0-3.866 3.134-7 7-7Z" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M2 12h20M12 2v20" stroke="currentColor" stroke-width="1" opacity="0.6" />
-            </svg>
+          <span class="relative flex size-9 items-center justify-center rounded-full bg-accent/15 text-accent ring-1 ring-accent/30 shadow-glow overflow-hidden">
+            <img src="/assets/logo.svg" alt="Lentera Global logo" class="w-9 h-9" />
           </span>
           <div class="leading-none">
             <div class="font-display text-xl font-bold tracking-wide">Lentera Global</div>
@@ -112,14 +109,15 @@
 
     <!-- HERO -->
     <section class="relative h-screen min-h-[680px] w-full overflow-hidden">
-      <div class="absolute inset-0">
+      <div class="absolute inset-0 will-change-transform" id="hero-media">
         <!-- Background image (cinematic) -->
         <img src="https://images.unsplash.com/photo-1529119368496-2c0df210f5f7?auto=format&fit=crop&w=1920&q=80" alt="Planet and stars" class="h-full w-full object-cover object-center opacity-80" />
-        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="absolute inset-0 hero-overlay animate-pulse slow"></div>
         <div class="absolute inset-0 bg-noise"></div>
       </div>
       <div class="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6">
         <div data-aos="fade-up" class="max-w-3xl text-center">
+          <img src="/assets/logo.svg" alt="Lentera Global" class="mx-auto mb-6 w-16 h-16 opacity-90 animate-float" />
           <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-wide">
             LENTERA GLOBAL
           </h1>
@@ -172,7 +170,7 @@
         </div>
         <div class="relative" data-aos="fade-left">
           <div class="aspect-[4/3] w-full overflow-hidden rounded-xl glass shadow-glow">
-            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop" alt="Camera in a scenic landscape" class="h-full w-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop" alt="Camera in a scenic landscape" class="h-full w-full object-cover" loading="lazy" />
           </div>
           <div class="pointer-events-none absolute -bottom-6 -left-6 hidden md:block rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm" data-aos="zoom-in" data-aos-delay="200">
             <div class="flex items-center gap-3">
@@ -239,7 +237,7 @@
 
         <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Card 1 -->
-          <div class="group glass rounded-2xl p-6 hover:shadow-glow transition" data-aos="fade-up">
+          <div class="group glass rounded-2xl p-6 hover:shadow-glow transition tilt-card" data-aos="fade-up">
             <div class="flex items-center justify-between">
               <div class="size-12 rounded-md bg-accent/20 text-accent ring-1 ring-accent/30 flex items-center justify-center">🧭</div>
             </div>
@@ -247,19 +245,19 @@
             <p class="mt-2 text-white/70">Journey to diverse places to uncover perspectives that challenge and expand our worldview.</p>
           </div>
           <!-- Card 2 -->
-          <div class="group glass rounded-2xl p-6 hover:shadow-glow transition" data-aos="fade-up" data-aos-delay="100">
+          <div class="group glass rounded-2xl p-6 hover:shadow-glow transition tilt-card" data-aos="fade-up" data-aos-delay="100">
             <div class="size-12 rounded-md bg-accent/20 text-accent ring-1 ring-accent/30 flex items-center justify-center">🎥</div>
             <h3 class="mt-5 font-display text-xl font-semibold">Documentaries</h3>
             <p class="mt-2 text-white/70">Craft cinematic stories that inform, move, and connect audiences across the globe.</p>
           </div>
           <!-- Card 3 -->
-          <div class="group glass rounded-2xl p-6 hover:shadow-glow transition" data-aos="fade-up" data-aos-delay="150">
+          <div class="group glass rounded-2xl p-6 hover:shadow-glow transition tilt-card" data-aos="fade-up" data-aos-delay="150">
             <div class="size-12 rounded-md bg-accent/20 text-accent ring-1 ring-accent/30 flex items-center justify-center">🌏</div>
             <h3 class="mt-5 font-display text-xl font-semibold">Culture</h3>
             <p class="mt-2 text-white/70">Celebrate traditions, languages, and artistry to foster empathy and respect.</p>
           </div>
           <!-- Card 4 -->
-          <div class="group glass rounded-2xl p-6 hover:shadow-glow transition" data-aos="fade-up" data-aos-delay="200">
+          <div class="group glass rounded-2xl p-6 hover:shadow-glow transition tilt-card" data-aos="fade-up" data-aos-delay="200">
             <div class="size-12 rounded-md bg-accent/20 text-accent ring-1 ring-accent/30 flex items-center justify-center">📡</div>
             <h3 class="mt-5 font-display text-xl font-semibold">Global Exposure</h3>
             <p class="mt-2 text-white/70">Distribute across platforms to reach communities near and far with powerful storytelling.</p>
@@ -327,7 +325,7 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-      AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic', offset: 60 });
+      AOS.init({ duration: 1000, once: true, easing: 'ease-out-quart', offset: 80 });
 
       // Dynamic year
       document.getElementById('year').textContent = new Date().getFullYear();
@@ -374,6 +372,31 @@
         statusBox.textContent = 'Thanks! Your email client should open. If not, email us at hello@lentera.global';
         statusBox.classList.remove('hidden');
         form.reset();
+      });
+
+      // Parallax effect for hero background
+      const heroMedia = document.getElementById('hero-media');
+      const parallax = () => {
+        const y = window.scrollY * 0.25;
+        heroMedia.style.transform = `translateY(${y}px) scale(1.02)`;
+      };
+      window.addEventListener('scroll', parallax, { passive: true });
+
+      // Tilt effect for mission cards
+      const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+      document.querySelectorAll('.tilt-card').forEach((card) => {
+        const strength = 8; // degrees
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const px = (e.clientX - rect.left) / rect.width; // 0..1
+          const py = (e.clientY - rect.top) / rect.height; // 0..1
+          const rx = clamp((0.5 - py) * strength, -strength, strength);
+          const ry = clamp((px - 0.5) * strength, -strength, strength);
+          card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
       });
     </script>
   </body>
