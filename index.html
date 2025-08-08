@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Lentera Global — Exploring the World Through Vision</title>
     <meta name="description" content="Lentera Global — Exploring the World Through Vision. Travel, documentaries, culture, and global exposure." />
+    <link rel="canonical" href="https://lentera.global/" />
+    <meta name="theme-color" content="#0b0f14" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lentera Global" />
+    <meta property="og:title" content="Lentera Global — Exploring the World Through Vision" />
+    <meta property="og:description" content="Travel, documentaries, culture, and global exposure." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1529119368496-2c0df210f5f7?auto=format&fit=crop&w=1200&q=80" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lentera Global — Exploring the World Through Vision" />
+    <meta name="twitter:description" content="Travel, documentaries, culture, and global exposure." />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1529119368496-2c0df210f5f7?auto=format&fit=crop&w=1200&q=80" />
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1529119368496-2c0df210f5f7?auto=format&fit=crop&w=1920&q=80" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%2346c2ff'/%3E%3Ccircle cx='50' cy='50' r='34' fill='%230b0f14'/%3E%3C/svg%3E" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -69,7 +82,7 @@
   <body class="antialiased text-white bg-dark selection:bg-accent/30 selection:text-white">
     <!-- NAV -->
     <header id="top" class="fixed inset-x-0 top-0 z-50">
-      <nav id="site-nav" class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between transition-all duration-300">
+      <nav id="site-nav" class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between relative transition-all duration-300">
         <!-- Logo (SVG) -->
         <a href="#top" class="group inline-flex items-center gap-3">
           <span class="relative flex size-9 items-center justify-center rounded-full bg-accent/15 text-accent ring-1 ring-accent/30 shadow-glow">
@@ -95,6 +108,7 @@
         </a>
       </nav>
     </header>
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-accent z-50 w-0"></div>
 
     <!-- HERO -->
     <section class="relative h-screen min-h-[680px] w-full overflow-hidden">
@@ -190,22 +204,22 @@
         <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" data-aos="fade-up" data-aos-delay="100">
           <!-- Static preview thumbnails; replace with API-driven content if desired -->
           <a class="group relative aspect-square overflow-hidden rounded-lg ring-1 ring-white/10 hover:ring-accent/40 transition" href="https://instagram.com/lentera.world" target="_blank" rel="noopener">
-            <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600&auto=format&fit=crop" alt="Travel still 1" />
+            <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600&auto=format&fit=crop" alt="Travel still 1" loading="lazy" />
           </a>
           <a class="group relative aspect-square overflow-hidden rounded-lg ring-1 ring-white/10 hover:ring-accent/40 transition" href="https://instagram.com/lentera.world" target="_blank" rel="noopener">
-            <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=600&auto=format&fit=crop" alt="Travel still 2" />
+            <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=600&auto=format&fit=crop" alt="Travel still 2" loading="lazy" />
           </a>
           <a class="group relative aspect-square overflow-hidden rounded-lg ring-1 ring-white/10 hover:ring-accent/40 transition" href="https://instagram.com/lentera.world" target="_blank" rel="noopener">
-            <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600&auto=format&fit=crop" alt="Travel still 3" />
+            <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600&auto=format&fit=crop" alt="Travel still 3" loading="lazy" />
           </a>
           <a class="group relative aspect-square overflow-hidden rounded-lg ring-1 ring-white/10 hover:ring-accent/40 transition" href="https://instagram.com/lentera.world" target="_blank" rel="noopener">
-            <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" alt="Travel still 4" />
+            <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" alt="Travel still 4" loading="lazy" />
           </a>
           <a class="group relative aspect-square overflow-hidden rounded-lg ring-1 ring-accent/10 hover:ring-accent/40 transition" href="https://instagram.com/lentera.world" target="_blank" rel="noopener">
-            <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=600&auto=format&fit=crop" alt="Travel still 5" />
+            <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=600&auto=format&fit=crop" alt="Travel still 5" loading="lazy" />
           </a>
           <a class="group relative aspect-square overflow-hidden rounded-lg ring-1 ring-accent/10 hover:ring-accent/40 transition" href="https://instagram.com/lentera.world" target="_blank" rel="noopener">
-            <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1549880181-56a44cf4a9a7?q=80&w=600&auto=format&fit=crop" alt="Travel still 6" />
+            <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1549880181-56a44cf4a9a7?q=80&w=600&auto=format&fit=crop" alt="Travel still 6" loading="lazy" />
           </a>
         </div>
 
@@ -329,6 +343,19 @@
       };
       activateNav();
       window.addEventListener('scroll', activateNav, { passive: true });
+
+      // Scroll progress bar
+      const progressBar = document.getElementById('scroll-progress');
+      const updateProgress = () => {
+        if (!progressBar) return;
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = progress + '%';
+      };
+      updateProgress();
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress);
 
       // Contact form behavior (demo)
       const form = document.getElementById('contact-form');
