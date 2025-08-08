@@ -22,7 +22,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;600&family=Bebas+Neue&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,10 +37,13 @@
             },
             fontFamily: {
               display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+              cinematic: ['Bebas Neue', 'system-ui', 'sans-serif'],
+              serifDisplay: ['Cinzel', 'serif'],
               sans: ['Inter', 'system-ui', 'sans-serif'],
             },
             boxShadow: {
               glow: '0 0 40px rgba(70,194,255,0.25)',
+              cinematic: '0 20px 60px rgba(0,0,0,0.55), 0 0 120px rgba(70,194,255,0.12)'
             },
             backgroundImage: {
               'noise': "url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%25\' height=\'100%25\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence baseFrequency=\'0.8\' numOctaves=\'2\' stitchTiles=\'stitch\' type=\'fractalNoise\'/%3E%3CfeColorMatrix type=\'saturate\' values=\'0\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.03\'/%3E%3C/svg%3E')",
@@ -50,9 +53,14 @@
                 '0%, 100%': { transform: 'translateY(0)' },
                 '50%': { transform: 'translateY(-6px)' },
               },
+              vignette: {
+                '0%, 100%': { opacity: 0.7 },
+                '50%': { opacity: 0.9 },
+              },
             },
             animation: {
               float: 'float 6s ease-in-out infinite',
+              vignette: 'vignette 10s ease-in-out infinite',
             },
           },
         },
@@ -69,13 +77,17 @@
       .hero-overlay {
         background: radial-gradient(1100px 500px at 20% 20%, rgba(70,194,255,0.15), rgba(70,194,255,0) 60%),
                     radial-gradient(900px 450px at 80% 30%, rgba(255,255,255,0.06), rgba(255,255,255,0) 60%),
-                    linear-gradient(180deg, rgba(0,0,0,0.2), rgba(11,15,20,0.9) 70%);
+                    linear-gradient(180deg, rgba(0,0,0,0.3), rgba(11,15,20,0.95) 75%);
       }
       .glass {
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
         border: 1px solid rgba(255,255,255,0.08);
+      }
+      .text-glow { text-shadow: 0 6px 30px rgba(70,194,255,0.25), 0 2px 10px rgba(0,0,0,0.4); }
+      @media (prefers-reduced-motion: reduce) {
+        * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
       }
     </style>
   </head>
@@ -108,28 +120,30 @@
     <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-accent z-50 w-0"></div>
 
     <!-- HERO -->
-    <section class="relative h-screen min-h-[680px] w-full overflow-hidden">
+    <section class="relative h-screen min-h-[720px] w-full overflow-hidden">
       <div class="absolute inset-0 will-change-transform" id="hero-media">
-        <!-- Background image (cinematic) -->
-        <img src="https://images.unsplash.com/photo-1529119368496-2c0df210f5f7?auto=format&fit=crop&w=1920&q=80" alt="Planet and stars" class="h-full w-full object-cover object-center opacity-80" />
-        <div class="absolute inset-0 hero-overlay animate-pulse slow"></div>
+        <!-- Cinematic video background with fallback poster -->
+        <video id="hero-video" class="h-full w-full object-cover object-center opacity-90" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1529119368496-2c0df210f5f7?auto=format&fit=crop&w=1920&q=80">
+          <source src="https://cdn.coverr.co/videos/coverr-earth-rotation-6286/1080p.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute inset-0 hero-overlay animate-vignette"></div>
         <div class="absolute inset-0 bg-noise"></div>
       </div>
       <div class="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6">
         <div data-aos="fade-up" class="max-w-3xl text-center">
           <img src="/assets/logo.svg" alt="Lentera Global" class="mx-auto mb-6 w-16 h-16 opacity-90 animate-float" />
-          <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-wide">
+          <h1 class="font-cinematic text-6xl sm:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-wider text-glow">
             LENTERA GLOBAL
           </h1>
-          <p class="mt-3 text-xl italic text-white/70">Exploring the World Through Vision</p>
+          <p class="mt-3 text-lg sm:text-xl font-serifDisplay italic text-white/80">Exploring the World Through Vision</p>
           <p class="mt-6 max-w-xl text-white/80">
             Lentera Global documents the journeys that connect cultures, landscapes, and people — turning stories from around the world into immersive visual experiences.
           </p>
           <div class="mt-10 flex flex-wrap items-center gap-3">
-            <a href="#about" class="inline-flex items-center gap-2 rounded-full bg-white text-dark px-5 py-3 text-sm font-semibold hover:brightness-95 transition">
+            <a href="#about" class="inline-flex items-center gap-2 rounded-full bg-white text-dark px-5 py-3 text-sm font-semibold hover:brightness-95 transition shadow-cinematic">
               Learn more
             </a>
-            <a href="#instagram" class="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold ring-1 ring-white/20 hover:bg-white/5 transition">
+            <a href="#instagram" class="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold ring-1 ring-white/20 hover:bg-white/5 transition shadow-cinematic/50">
               See our world
             </a>
           </div>
@@ -237,7 +251,7 @@
 
         <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Card 1 -->
-          <div class="group glass rounded-2xl p-6 hover:shadow-glow transition tilt-card" data-aos="fade-up">
+          <div class="group glass rounded-2xl p-6 hover:shadow-glow shadow-cinematic transition tilt-card" data-aos="fade-up">
             <div class="flex items-center justify-between">
               <div class="size-12 rounded-md bg-accent/20 text-accent ring-1 ring-accent/30 flex items-center justify-center">🧭</div>
             </div>
@@ -245,19 +259,19 @@
             <p class="mt-2 text-white/70">Journey to diverse places to uncover perspectives that challenge and expand our worldview.</p>
           </div>
           <!-- Card 2 -->
-          <div class="group glass rounded-2xl p-6 hover:shadow-glow transition tilt-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="group glass rounded-2xl p-6 hover:shadow-glow shadow-cinematic transition tilt-card" data-aos="fade-up" data-aos-delay="100">
             <div class="size-12 rounded-md bg-accent/20 text-accent ring-1 ring-accent/30 flex items-center justify-center">🎥</div>
             <h3 class="mt-5 font-display text-xl font-semibold">Documentaries</h3>
             <p class="mt-2 text-white/70">Craft cinematic stories that inform, move, and connect audiences across the globe.</p>
           </div>
           <!-- Card 3 -->
-          <div class="group glass rounded-2xl p-6 hover:shadow-glow transition tilt-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="group glass rounded-2xl p-6 hover:shadow-glow shadow-cinematic transition tilt-card" data-aos="fade-up" data-aos-delay="150">
             <div class="size-12 rounded-md bg-accent/20 text-accent ring-1 ring-accent/30 flex items-center justify-center">🌏</div>
             <h3 class="mt-5 font-display text-xl font-semibold">Culture</h3>
             <p class="mt-2 text-white/70">Celebrate traditions, languages, and artistry to foster empathy and respect.</p>
           </div>
           <!-- Card 4 -->
-          <div class="group glass rounded-2xl p-6 hover:shadow-glow transition tilt-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="group glass rounded-2xl p-6 hover:shadow-glow shadow-cinematic transition tilt-card" data-aos="fade-up" data-aos-delay="200">
             <div class="size-12 rounded-md bg-accent/20 text-accent ring-1 ring-accent/30 flex items-center justify-center">📡</div>
             <h3 class="mt-5 font-display text-xl font-semibold">Global Exposure</h3>
             <p class="mt-2 text-white/70">Distribute across platforms to reach communities near and far with powerful storytelling.</p>
@@ -324,8 +338,21 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://unpkg.com/lenis@1.0.42/bundled/lenis.min.js"></script>
     <script>
-      AOS.init({ duration: 1000, once: true, easing: 'ease-out-quart', offset: 80 });
+      AOS.init({ duration: 1100, once: true, easing: 'ease-out-quart', offset: 90 });
+
+      // Smooth scroll (Lenis)
+      const lenis = new Lenis({
+        smoothWheel: true,
+        duration: 1.1,
+        easing: (t) => 1 - Math.pow(1 - t, 3),
+      });
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
 
       // Dynamic year
       document.getElementById('year').textContent = new Date().getFullYear();
@@ -377,8 +404,8 @@
       // Parallax effect for hero background
       const heroMedia = document.getElementById('hero-media');
       const parallax = () => {
-        const y = window.scrollY * 0.25;
-        heroMedia.style.transform = `translateY(${y}px) scale(1.02)`;
+        const y = window.scrollY * 0.2;
+        heroMedia.style.transform = `translateY(${y}px) scale(1.03)`;
       };
       window.addEventListener('scroll', parallax, { passive: true });
 
@@ -398,6 +425,10 @@
           card.style.transform = 'rotateX(0deg) rotateY(0deg)';
         });
       });
+    
+      // Fallback: pause video if user's device blocks autoplay
+      const hv = document.getElementById('hero-video');
+      hv && hv.addEventListener('error', () => { hv.style.display = 'none'; });
     </script>
   </body>
 </html>
